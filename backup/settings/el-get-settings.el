@@ -32,6 +32,7 @@
                yasnippet
                yaml-mode
                evil
+               rust-mode
                ))   
 
 ; first enable shallow clone, so we don't need to clone the entire

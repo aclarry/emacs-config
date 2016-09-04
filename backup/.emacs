@@ -74,6 +74,9 @@
 ;; Javascript
 (require 'js-settings)
 
+;; Rust Mode
+(require 'rust-settings)
+
 ;; YAML mode
 (require 'yaml-settings)
 
