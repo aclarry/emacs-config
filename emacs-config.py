@@ -59,27 +59,42 @@ def install():
             else:
                 choice = raw_input().lower()
             if choice in ("yes", "ye", "y"):
+    		shutil.rmtree(settings_dir)
                 break
             elif choice in ("no", "n"):
                 return
             else:
                 print("Must answer yes or no. Overwrite directory %s?" % settings_dir)
 
-    shutil.rmtree(settings_dir)
     shutil.copyfile(emacs_backup, emacs_file)
     shutil.copytree(settings_backup, settings_dir)
+
+
+def helptext():
+    print("emacs-config.py for Python 2.7 and Python 3.x")
+    print("USAGE: python emacs-config.py [install|update]")
+    print("Argument instructions:")
+    print("    install: Installs the emacs configuration files into your Unix user's home folder")
+    print("    update: Updates the archived configuration with files located in your Unix user's home folder")
 
 
 if __name__ == "__main__":
     for arg in sys.argv:
         try:
             if arg == "install":
+                print("Installing Andrew Clarry's emacs configuration")
                 install()
             elif arg == "update":
                 update()
+            if arg in ("help", "-h", "--help"):
+                helptext()
         except KeyboardInterrupt:
             print("Exiting")
             sys.exit(1)
+
+    if len(sys.argv) < 2:
+        print("Please specify what you want done\n")
+        helptext()
 
 
 
